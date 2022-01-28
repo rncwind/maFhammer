@@ -1,12 +1,15 @@
 * MaFhammer
+
 An experimental tool written in F# designed to allow users to simulate the effectivness
 of model/weapon matchups in the tabletop game Warhammer 40K.
 
 * How do I use this?
+
 Crunchlines for weapons should be stored in the Weapons subdirectory as json files.
 The json file is per-weapon. See Weapons/lasgun.json for an example.
 
 * Why F#?
+
 Mostly because I am learning F# as of writing, and it seemed like an interesting fit.
 Since we will be doing statistical modeling of data, a (nominally)pure functional programming
 language seemed like a good fit.
