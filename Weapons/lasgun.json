@@ -1,0 +1,14 @@
+{
+    "name": "Lasgun",
+    "wType": {
+        "Category": "Rapid Fire",
+        "DamageType" : 1,
+        "Dice": "1"
+    },
+    "S": "3",
+    "AP": "0",
+    "D": {
+        "DamageType" : 1,
+        "Damage" : "1"
+    }
+}
