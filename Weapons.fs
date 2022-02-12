@@ -7,7 +7,7 @@ open FSharp.Data.JsonExtensions
 
 type Weapon = {
     wName: string
-    wType: DamageType
+    wType: WeaponType
     S: int
     AP: int
     D: DamageType
@@ -49,10 +49,18 @@ let handleComplexTypes parsed =
     // Extract the damage type
     let dt = (parsed?D?DamageType.AsInteger(), parsed?D?Damage.AsString())
     let realDt = extractDamageType dt
+    let realDt =
+        match realDt with
+        | Ok valid -> valid
+        | Error e -> failwith e
+    
     (realWt, realDt)
 
 let deserialiseWeapon jsonpath =
     let rawjson = System.IO.File.ReadAllText jsonpath
     let parsed = JsonValue.Parse(rawjson)
-    printfn "%A" parsed
-    handleComplexTypes parsed
+    let (wt, dt) = handleComplexTypes parsed
+    let name = parsed?name.AsString()
+    let S = parsed?S.AsInteger()
+    let AP = parsed?AP.AsInteger()
+    {wName = name; wType = wt; S = S; AP = AP; D = dt;}
